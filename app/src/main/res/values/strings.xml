@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">Challenge4_Afifuddin</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_main_app">MainApp</string>
+    <string name="title_activity_menu">MenuActivity</string>
+    <string name="you_have">You Have 0 Recips in your \napss now</string>
+    <string name="your_recipe">Your Recipe</string>
+    <string name="judul">Judul</string>
+    <string name="nama_makanan">nama makanan</string>
+    <string name="ingredient">Ingredient</string>
+    <string name="add_your_nrecipe">Add Your \nRecipe</string>
+    <string name="add_food">What you want add today ?</string>
+    <string name="insert_food">Insert food name</string>
+    <string name="insert_ingredient">Insert Ingredient</string>
+    <string name="insert_step">Insert step</string>
+    <string name="step">Step</string>
+    <string name="insert_picture">insert picture</string>
+    <string name="add">Add</string>
+    <string name="edit">Edit</string>
+    <string name="want_edit">What you want edit ?</string>
+    <string name="edit_recipe">Edit Your\nRecipe</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login">Login</string>
+    <string name="cook_today">What you wanti cook today ?</string>
+    <string name="logout">Logout</string>
+    <string name="nama">Nama</string>
+    <string name="date_of_birth">date of birth</string>
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="signup">SignUp</string>
+    <string name="dd_mm_yyyy">dd/MM/yyyy</string>
+    <string name="delete_makanan">Delete makanan ?</string>
+    <string name="email">email</string>
+</resources>

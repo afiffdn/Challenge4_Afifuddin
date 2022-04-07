@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_margin="16dp"
+    tools:context=".AddFragment">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_your_nrecipe"
+        android:textSize="36sp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_food"
+        android:textSize="16sp"
+        />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/insert_food"
+        android:id="@+id/et_insert_food_name"
+        android:layout_marginTop="40dp"
+        android:inputType="text"
+        android:autofillHints="name " />
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:width="2dp"
+        android:id="@+id/et_insert_ingredient"
+        android:hint="@string/insert_ingredient"
+        android:inputType="text" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_marginTop="16dp"
+        android:id="@+id/et_insert_step"
+        android:layout_height="wrap_content"
+        android:hint="@string/insert_step"
+        android:inputType="text" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="45dp"
+        android:text="@string/add"
+        android:textAllCaps="false"
+        android:textSize="24sp"
+        android:id="@+id/btn_add"
+        app:cornerRadius="20dp"
+        />
+
+</LinearLayout>
