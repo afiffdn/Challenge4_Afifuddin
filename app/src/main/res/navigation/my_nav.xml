@@ -26,12 +26,6 @@
             app:argType="string"
             android:defaultValue="username" />
         <action
-            android:id="@+id/action_fragmentMain_to_addFragment"
-            app:destination="@id/addFragment" />
-        <action
-            android:id="@+id/action_fragmentMain_to_editFragment"
-            app:destination="@id/editFragment" />
-        <action
             android:id="@+id/action_fragmentMain_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
@@ -44,14 +38,10 @@
             android:id="@+id/action_signUpFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/addFragment"
-        android:name="com.example.challenge4_afifuddin.AddFragment"
-        android:label="fragment_add"
-        tools:layout="@layout/fragment_add" />
-    <fragment
-        android:id="@+id/editFragment"
-        android:name="com.example.challenge4_afifuddin.EditFragment"
-        android:label="fragment_edit"
-        tools:layout="@layout/fragment_edit" />
+    <activity
+        android:id="@+id/splashActivity3"
+        android:name="com.example.challenge4_afifuddin.SplashActivity"
+        android:label="activity_splash"
+        tools:layout="@layout/activity_splash" />
+
 </navigation>

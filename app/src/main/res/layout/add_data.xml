@@ -6,15 +6,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_margin="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="16dp">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/add_your_nrecipe"
         android:textSize="36sp"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="@color/main"
         />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
         android:text="@string/add_food"
         android:textSize="16sp"
         />
@@ -27,9 +36,9 @@
         android:layout_marginTop="40dp"
         android:inputType="text"
         android:autofillHints="name " />
-    <com.google.android.material.textfield.TextInputEditText
+    <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:layout_marginTop="16dp"
         android:width="2dp"
         android:id="@+id/et_insert_ingredient"
@@ -39,7 +48,7 @@
         android:layout_width="match_parent"
         android:layout_marginTop="16dp"
         android:id="@+id/et_insert_step"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:hint="@string/insert_step"
         android:inputType="text" />
 
@@ -67,5 +76,5 @@
         android:id="@+id/btn_cancel"
         app:cornerRadius="20dp"
         />
-
+    </LinearLayout>
 </LinearLayout>

@@ -5,14 +5,17 @@
       <map>
         <entry key="..\:/studi independent/kegiatan/Challenge4_Afifuddin/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.1605" />
         <entry key="..\:/studi independent/kegiatan/Challenge4_Afifuddin/app/src/main/res/drawable/ic_baseline_person_outline_24.xml" value="0.1595" />
+        <entry key="..\:/studi independent/kegiatan/Challenge4_Afifuddin/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.138" />
         <entry key="..\:/studi independent/kegiatan/Challenge4_Afifuddin/app/src/main/res/drawable/ic_edit.xml" value="0.1415" />
         <entry key="..\:/studi independent/kegiatan/Challenge4_Afifuddin/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.114" />
         <entry key="..\:/studi independent/kegiatan/Challenge4_Afifuddin/app/src/main/res/drawable/ic_logo_chef.xml" value="0.1" />
         <entry key="..\:/studi independent/kegiatan/Challenge4_Afifuddin/app/src/main/res/drawable/progress.xml" value="0.166" />
         <entry key="..\:/studi independent/kegiatan/Challenge4_Afifuddin/app/src/main/res/font-v26/poppins_black.xml" value="0.2546875" />
+        <entry key="..\:/studi independent/kegiatan/Challenge4_Afifuddin/app/src/main/res/font/poppins.xml" value="0.25076923076923074" />
         <entry key="..\:/studi independent/kegiatan/Challenge4_Afifuddin/app/src/main/res/font/poppins_black.xml" value="0.2546875" />
         <entry key="..\:/studi independent/kegiatan/Challenge4_Afifuddin/app/src/main/res/font/poppins_regular.xml" value="0.2546875" />
         <entry key="..\:/studi independent/kegiatan/Challenge4_Afifuddin/app/src/main/res/layout-v28/activity_splash.xml" value="0.22447916666666667" />
+        <entry key="..\:/studi independent/kegiatan/Challenge4_Afifuddin/app/src/main/res/layout-v28/fragment_main.xml" value="0.22447916666666667" />
         <entry key="..\:/studi independent/kegiatan/Challenge4_Afifuddin/app/src/main/res/layout/activity_add.xml" value="0.25" />
         <entry key="..\:/studi independent/kegiatan/Challenge4_Afifuddin/app/src/main/res/layout/activity_edit.xml" value="0.22447916666666667" />
         <entry key="..\:/studi independent/kegiatan/Challenge4_Afifuddin/app/src/main/res/layout/activity_login.xml" value="0.1" />
@@ -32,7 +35,7 @@
         <entry key="..\:/studi independent/kegiatan/Challenge4_Afifuddin/app/src/main/res/layout/fragment_first.xml" value="0.25" />
         <entry key="..\:/studi independent/kegiatan/Challenge4_Afifuddin/app/src/main/res/layout/fragment_list_menu.xml" value="0.33" />
         <entry key="..\:/studi independent/kegiatan/Challenge4_Afifuddin/app/src/main/res/layout/fragment_login.xml" value="0.22447916666666667" />
-        <entry key="..\:/studi independent/kegiatan/Challenge4_Afifuddin/app/src/main/res/layout/fragment_main.xml" value="0.22" />
+        <entry key="..\:/studi independent/kegiatan/Challenge4_Afifuddin/app/src/main/res/layout/fragment_main.xml" value="0.25" />
         <entry key="..\:/studi independent/kegiatan/Challenge4_Afifuddin/app/src/main/res/layout/fragment_remove.xml" value="0.22447916666666667" />
         <entry key="..\:/studi independent/kegiatan/Challenge4_Afifuddin/app/src/main/res/layout/fragment_second.xml" value="0.22447916666666667" />
         <entry key="..\:/studi independent/kegiatan/Challenge4_Afifuddin/app/src/main/res/layout/fragment_sign_in.xml" value="0.22447916666666667" />

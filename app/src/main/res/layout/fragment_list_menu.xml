@@ -22,6 +22,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/main"
             android:text="@string/nama_makanan"
             android:textSize="20sp"
             android:gravity="center"
@@ -35,6 +37,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/ingerdient"
             android:text="@string/ingredient"
+            android:fontFamily="@font/poppins_medium"
             android:layout_marginStart="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -43,10 +46,11 @@
             android:textSize="13sp"/>
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:id="@+id/isi_ingredient"
             android:text=" - "
             android:layout_marginStart="16dp"
+            android:fontFamily="@font/poppins_light"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ingerdient"
@@ -55,6 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/how_to"
+            android:fontFamily="@font/poppins_medium"
             android:text="@string/step"
             android:layout_marginStart="16dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +68,8 @@
             android:textSize="13sp"/>
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
+            android:fontFamily="@font/poppins_light"
             android:id="@+id/isi_how_to"
             android:text=" - "
             android:layout_marginStart="16dp"
@@ -78,7 +84,7 @@
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="@id/isi_how_to"
             app:layout_constraintTop_toBottomOf="@id/isi_how_to">
-            <com.google.android.material.imageview.ShapeableImageView
+             <com.google.android.material.imageview.ShapeableImageView
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"

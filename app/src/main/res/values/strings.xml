@@ -42,4 +42,6 @@
     <string name="cancel">Cancel</string>
     <string name="edit">Edit</string>
     <string name="title_activity_splash">SplashActivity</string>
+    <string name="hello_apip">Hello, Apip</string>
+    <string name="search">Search</string>
 </resources>

@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.challenge4_afifuddin.database.LoginDatabase
 import com.example.challenge4_afifuddin.databinding.FragmentFirstBinding
 import kotlinx.coroutines.Dispatchers
@@ -45,10 +46,10 @@ class LoginFragment : Fragment() {
         if (user != "defaultuser") {
             binding.etUsername.setText(user)
         }
-        val cekLogin = sharedPreferences.getString("key", "defaultkey")
-//        if (cekLogin != "defaultkey"){
-//            findNavController().navigate(R.id.action_loginFragment_to_fragmentMain)
-//        }
+        val cekLogin = sharedPreferences.getString("login", "defaultkey")
+        if (cekLogin == "login"){
+            findNavController().navigate(R.id.action_loginFragment_to_fragmentMain)
+        }
 
         binding.btnSignup.setOnClickListener {
             val moveToSignUp = LoginFragmentDirections.actionLoginFragmentToSignUpFragment()
