@@ -10,34 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Challenge4_Afifuddin">
         <activity
-            android:name=".database.EditActivity"
-            android:exported="false" />
-        <activity
-            android:name=".database.AddActivity"
-            android:exported="false" />
-        <activity
-            android:name=".database.LoginAwal"
-            android:exported="false" />
-        <activity
-            android:name=".database.MainApp"
-            android:exported="false"
-            android:label="@string/title_activity_main_app"
-            android:theme="@style/Theme.Challenge4_Afifuddin.NoActionBar" />
-        <activity
-            android:name=".MenuActivity"
-            android:exported="false"
-            android:label="@string/title_activity_menu"
-            android:theme="@style/Theme.Challenge4_Afifuddin.NoActionBar" />
-        <activity
-            android:name=".database.LoginActivity"
-            android:exported="false"
-            android:label="@string/title_activity_login"
-            android:theme="@style/Theme.Challenge4_Afifuddin.NoActionBar" />
-        <activity
-            android:name=".Login"
-            android:exported="false"
-            android:label="@string/title_activity_login"
-            android:theme="@style/Theme.Challenge4_Afifuddin.NoActionBar" />
+            android:name=".SplashActivity"
+            android:exported="true"
+            android:label="@string/title_activity_splash"
+            android:theme="@style/Theme.Challenge4_Afifuddin.NoActionBar" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".database.MainActivity"
             android:exported="true">
