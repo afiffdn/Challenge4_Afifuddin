@@ -8,27 +8,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.example.challenge4_afifuddin.database.LoginDatabase
 import com.example.challenge4_afifuddin.databinding.FragmentFirstBinding
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 
-@Suppress("UNREACHABLE_CODE")
+
 class LoginFragment : Fragment() {
     private var _binding: FragmentFirstBinding? = null
     private val binding get() = _binding!!
     private var mDb: LoginDatabase? = null
     private val sharePredfile = "kotlinsharepreference"
 
-    @OptIn(InternalCoroutinesApi::class)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,13 +34,14 @@ class LoginFragment : Fragment() {
 
     }
 
-    @OptIn(InternalCoroutinesApi::class)
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mDb = LoginDatabase.getInstance(requireContext())
         val sharedPreferences =
             requireContext().getSharedPreferences(sharePredfile, Context.MODE_PRIVATE)
         val user = sharedPreferences.getString("registusername", "defaultuser")
+        val pass = sharedPreferences.getString("registpassword","defaultpass")
         if (user != "defaultuser") {
             binding.etUsername.setText(user)
         }
@@ -68,7 +64,9 @@ class LoginFragment : Fragment() {
             } else {
                 lifecycleScope.launch(Dispatchers.IO) {
                     runBlocking(Dispatchers.Main) {
-                        if (user  != "registusername") {
+//                        val login =
+//                            mDb?.loginDao()?.checkLogin(binding.etUsername.text.toString(),binding.etPassword.text.toString())
+                        if (user != "defaultuser")  {
                             val editor: SharedPreferences.Editor = sharedPreferences.edit()
                             editor.putString("username", binding.etUsername.text.toString())
                             editor.apply()

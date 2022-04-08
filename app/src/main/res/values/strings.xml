@@ -40,4 +40,5 @@
     <string name="dd_mm_yyyy">dd/MM/yyyy</string>
     <string name="delete_makanan">Delete makanan ?</string>
     <string name="email">email</string>
+    <string name="cancel">Cancel</string>
 </resources>

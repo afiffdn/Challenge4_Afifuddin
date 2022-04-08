@@ -80,6 +80,7 @@ class SignUpFragment : Fragment() {
                         if (result != 0.toLong()){
                             val editor :SharedPreferences.Editor =sharedPreferences.edit()
                             editor.putString("registusername",binding.etUsernameSignUp.text.toString())
+                            editor.putString("registpassword",binding.etPasswordSignup.text.toString())
                             editor.apply()
                             view.findNavController().navigate(R.id.action_signUpFragment_to_loginFragment)
                             Toast.makeText(requireContext(), "sukses tambah data", Toast.LENGTH_SHORT).show()

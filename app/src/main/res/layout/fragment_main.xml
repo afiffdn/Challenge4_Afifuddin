@@ -90,14 +90,13 @@
                     android:textStyle="bold"
                     android:layout_gravity="center_vertical"/>
 
-                <EditText
+                <ImageButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableEnd="@drawable/plus"
-                    android:layout_gravity="end"
-                    android:id="@+id/ev_add"
-                    android:backgroundTint="@color/white"
-                    android:focusable="false"/>
+                    android:src="@drawable/plus"
+                    android:layout_marginStart="240dp"
+                    android:id="@+id/ib_add"
+                    android:backgroundTint="@color/white"/>
 
             </LinearLayout>
             <androidx.recyclerview.widget.RecyclerView

@@ -5,8 +5,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_margin="16dp"
-    tools:context=".AddFragment">
+    android:layout_margin="16dp">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
