@@ -5,9 +5,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_margin="16dp"
-    tools:context=".EditFragment">
-
+    android:layout_margin="16dp">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,7 +15,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/want_edit"
+        android:text="@string/add_food"
         android:textSize="16sp"
         />
 
@@ -53,9 +51,21 @@
         android:text="@string/edit"
         android:textAllCaps="false"
         android:textSize="24sp"
-        android:id="@+id/btn_add"
+        android:id="@+id/btn_edit"
         app:cornerRadius="20dp"
         />
-
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:text="@string/cancel"
+        android:textAllCaps="false"
+        app:strokeWidth="2dp"
+        app:strokeColor="@color/main"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/main"
+        android:textSize="24sp"
+        android:id="@+id/btn_cancel"
+        app:cornerRadius="20dp"
+        />
 
 </LinearLayout>

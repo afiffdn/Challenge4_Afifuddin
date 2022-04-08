@@ -24,7 +24,6 @@
     <string name="step">Step</string>
     <string name="insert_picture">insert picture</string>
     <string name="add">Add</string>
-    <string name="edit">Edit</string>
     <string name="want_edit">What you want edit ?</string>
     <string name="edit_recipe">Edit Your\nRecipe</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -41,4 +40,5 @@
     <string name="delete_makanan">Delete makanan ?</string>
     <string name="email">email</string>
     <string name="cancel">Cancel</string>
+    <string name="edit">Edit</string>
 </resources>
