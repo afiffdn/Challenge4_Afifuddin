@@ -14,7 +14,7 @@ interface LoginDao {
     fun updateLogin(login: Login):Int
     @Delete
     fun deleteLogin(login: Login):Int
-    @Query("SELECT * FROM login WHERE username = :username AND password = :password")
+    @Query("SELECT EXISTS( SELECT * FROM login WHERE username = :username AND password = :password )")
     fun checkLogin(username:String, password:String):Boolean
 
 }

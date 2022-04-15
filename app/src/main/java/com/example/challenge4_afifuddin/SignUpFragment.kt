@@ -11,8 +11,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
+import com.example.challenge4_afifuddin.FirstFragment.Companion.CHECKUSER
 import com.example.challenge4_afifuddin.database.Login
-import com.example.challenge4_afifuddin.database.LoginDatabase
+import com.example.challenge4_afifuddin.database.recipe.AppDatabase
 import com.example.challenge4_afifuddin.databinding.FragmentSignUpBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.InternalCoroutinesApi
@@ -23,8 +24,12 @@ import kotlinx.coroutines.runBlocking
 class SignUpFragment : Fragment() {
     private var _binding : FragmentSignUpBinding? = null
     private val binding get() =_binding!!
-    private  val sharePredfile = "kotlinsharepreference"
-    private var mDb: LoginDatabase? = null
+//    private  val sharePredfile = "kotlinsharepreference"
+    private var mDb: AppDatabase? = null
+
+    companion object{
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,14 +53,14 @@ class SignUpFragment : Fragment() {
 
 
 
-    @SuppressLint("CommitPrefEdits")
+    @OptIn(InternalCoroutinesApi::class)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
 
-        mDb = LoginDatabase.getInstance(requireContext())
+        mDb = AppDatabase.getInstance(requireContext())
         val sharedPreferences =
-            requireContext().getSharedPreferences(sharePredfile, Context.MODE_PRIVATE)
+            requireContext().getSharedPreferences(CHECKUSER, Context.MODE_PRIVATE)
 
         binding.btnSignup2.setOnClickListener {
 
@@ -64,23 +69,18 @@ class SignUpFragment : Fragment() {
                 binding.etPasswordSignup.text.toString(),
                 binding.etEmail.text.toString(),
             binding.etName.text.toString()
-
-
             )
-
-
             if (binding.etName.text.isNullOrEmpty()){   binding.etName.error = "Masukkan Nama"}
             else if (binding.etEmail.text.isNullOrEmpty()){binding.etEmail.error = "Masukkan Tanggal Lahir"}
             else if (binding.etUsernameSignUp.text.isNullOrEmpty()){  binding.etUsernameSignUp.error = "Masukkan Username"}
             else if (binding.etPasswordSignup.text.isNullOrEmpty()){ binding.etPasswordSignup.error = "Masukkan Password"}
             else {
                 lifecycleScope.launch(Dispatchers.IO){
-                    val result = mDb?.loginDao()?.insertLogin(login)
+                    val result = mDb?.logindao()?.insertLogin(login)
                     runBlocking(Dispatchers.Main){
                         if (result != 0.toLong()){
                             val editor :SharedPreferences.Editor =sharedPreferences.edit()
-                            editor.putString("registusername",binding.etUsernameSignUp.text.toString())
-                            editor.putString("registpassword",binding.etPasswordSignup.text.toString())
+                            editor.putString(CHECKUSER,binding.etUsernameSignUp.text.toString())
                             editor.apply()
                             view.findNavController().navigate(R.id.action_signUpFragment_to_loginFragment)
                             Toast.makeText(requireContext(), "sukses tambah data", Toast.LENGTH_SHORT).show()

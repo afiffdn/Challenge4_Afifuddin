@@ -8,22 +8,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import com.example.challenge4_afifuddin.database.LoginDatabase
+import com.example.challenge4_afifuddin.database.recipe.AppDatabase
 import com.example.challenge4_afifuddin.databinding.FragmentFirstBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 
 
-
-class LoginFragment : Fragment() {
+class FirstFragment : Fragment() {
     private var _binding: FragmentFirstBinding? = null
     private val binding get() = _binding!!
-    private var mDb: LoginDatabase? = null
-    private val sharePredfile = "kotlinsharepreference"
+    private var mDb: AppDatabase? = null
+    private lateinit var preference : SharedPreferences
+
+companion object{
+    const val LOGINUSER = "login_username"
+    const val USERNAME = "username"
+    const val CHECKUSER = "check_username"
+}
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,24 +38,26 @@ class LoginFragment : Fragment() {
     }
 
 
+    @OptIn(InternalCoroutinesApi::class)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mDb = LoginDatabase.getInstance(requireContext())
-        val sharedPreferences =
-            requireContext().getSharedPreferences(sharePredfile, Context.MODE_PRIVATE)
-        val user = sharedPreferences.getString("registusername", "defaultuser")
-        val pass = sharedPreferences.getString("registpassword","defaultpass")
-        if (user != "defaultuser") {
-            binding.etUsername.setText(user)
-        }
-        val cekLogin = sharedPreferences.getString("login", "defaultkey")
-        if (cekLogin == "login"){
+        mDb = AppDatabase.getInstance(requireContext())
+         preference = requireContext().getSharedPreferences(LOGINUSER,Context.MODE_PRIVATE)
+//        preference = requireContext().getSharedPreferences(SignUpFragment.CHECKUSER,Context.MODE_PRIVATE)
+
+
+
+
+        if (preference.getString(USERNAME,null) != null ){
             findNavController().navigate(R.id.action_loginFragment_to_fragmentMain)
         }
 
+        if ( preference.getString(CHECKUSER,null) != null){
+            binding.etUsername.setText( preference.getString(CHECKUSER, "defaultuser"))
+        }
+
         binding.btnSignup.setOnClickListener {
-            val moveToSignUp = LoginFragmentDirections.actionLoginFragmentToSignUpFragment()
-            view.findNavController().navigate(moveToSignUp)
+            findNavController().navigate(R.id.action_loginFragment_to_signUpFragment)
         }
 
         binding.btnLogin.setOnClickListener {
@@ -63,13 +67,13 @@ class LoginFragment : Fragment() {
             ) {
                 Toast.makeText(requireContext(), "Tidak boleh kosong", Toast.LENGTH_SHORT).show()
             } else {
-                lifecycleScope.launch(Dispatchers.IO) {
-                    runBlocking(Dispatchers.Main) {
-//                        val login =
-//                            mDb?.loginDao()?.checkLogin(binding.etUsername.text.toString(),binding.etPassword.text.toString())
-                        if (user != "defaultuser")  {
-                            val editor: SharedPreferences.Editor = sharedPreferences.edit()
-                            editor.putString("username", binding.etUsername.text.toString())
+                GlobalScope.async {
+                    val login =
+                        mDb?.logindao()?.checkLogin(binding.etUsername.text.toString(),binding.etPassword.text.toString())
+                    activity?.runOnUiThread {
+                        if (login == true)  {
+                            val editor: SharedPreferences.Editor = preference.edit()
+                            editor.putString(USERNAME, binding.etUsername.text.toString())
                             editor.apply()
                             view.findNavController().navigate(R.id.action_loginFragment_to_fragmentMain)
                             Toast.makeText(requireContext(), "sukses login", Toast.LENGTH_SHORT)

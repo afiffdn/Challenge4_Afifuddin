@@ -4,16 +4,16 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.challenge4_afifuddin.database.recipe.Resep
 import com.example.challenge4_afifuddin.database.recipe.ResepAdapter
-import com.example.challenge4_afifuddin.database.recipe.ResepDatabase
+import com.example.challenge4_afifuddin.database.recipe.AppDatabase
 import com.example.challenge4_afifuddin.databinding.AddDataBinding
 import com.example.challenge4_afifuddin.databinding.EditDataBinding
 import com.example.challenge4_afifuddin.databinding.FragmentMainBinding
@@ -23,11 +23,12 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 
+@InternalCoroutinesApi
 class FragmentMain : Fragment() {
     private var _binding : FragmentMainBinding? = null
     private val binding get() = _binding!!
-    private var mDb: ResepDatabase? = null
-    private  val sharePredfile = "kotlinsharepreference"
+    private var mDb: AppDatabase? = null
+    private lateinit var  preference:SharedPreferences
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,17 +43,15 @@ class FragmentMain : Fragment() {
         fetchData()
     }
 
-    @OptIn(InternalCoroutinesApi::class)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mDb = ResepDatabase.getInstance(requireContext())
-        val sharedPreferences =
-            requireContext().getSharedPreferences(sharePredfile, Context.MODE_PRIVATE)
+        mDb = AppDatabase.getInstance(requireContext())
+        preference = requireContext().getSharedPreferences(FirstFragment.LOGINUSER,Context.MODE_PRIVATE)
 
-        val name = sharedPreferences.getString("username","apip")
-        binding.tvHello.setText("Hello,${name}")
+        val nama = preference.getString(FirstFragment.USERNAME,"default")
+        binding.tvHello.setText("Hello,${nama}")
 
-        val editor :SharedPreferences.Editor = sharedPreferences.edit()
+        val editor :SharedPreferences.Editor = preference.edit()
         binding.logout.setOnClickListener {
             editor.clear()
             editor.apply()
@@ -99,7 +98,7 @@ class FragmentMain : Fragment() {
 
     }
 
-    @OptIn(InternalCoroutinesApi::class)
+
     private fun fetchData() {
         lifecycleScope.launch(Dispatchers.IO){
             val listResep = mDb?.resepdao()?.getAllRecipe()
@@ -121,7 +120,7 @@ class FragmentMain : Fragment() {
                         }
 
                         editdialog.btnEdit.setOnClickListener {
-                        val myrecipe = ResepDatabase.getInstance(requireContext())
+                        val myrecipe = AppDatabase.getInstance(requireContext())
                             val resep = Resep(
                                 null,
                                 editdialog.etInsertFoodName.text.toString(),
@@ -148,6 +147,40 @@ class FragmentMain : Fragment() {
                                             .show()
                                         dialog.dismiss()
                                     }
+                                    editdialog.btnCancel.setOnClickListener {
+                                            dialog.dismiss()
+                                    }
+                                    editdialog.btnEdit.setOnClickListener {
+                                        val db = AppDatabase.getInstance(requireContext())
+                                        val dataEdit = Resep(
+                                        null,
+                                            editdialog.etInsertFoodName.text.toString(),
+                                            editdialog.etInsertIngredient.text.toString(),
+                                            editdialog.etInsertStep.text.toString()
+                                        )
+                                        lifecycleScope.launch (Dispatchers.IO){
+                                            val result = db?.resepdao()?.updateRecipe(dataEdit)
+                                        runBlocking(Dispatchers.Main) {
+                                            if (result != 0){
+                                                Toast.makeText(
+                                                    requireContext(),
+                                                    "resep makanan ${dataEdit.name} di update",
+                                                    Toast.LENGTH_SHORT
+                                                ).show()
+                                                fetchData()
+                                                dialog.dismiss()
+                                            }
+                                            else{
+                                                Toast.makeText(
+                                                    requireContext(),
+                                                    "resep makanan ${dataEdit.name} gaga di edit",
+                                                    Toast.LENGTH_SHORT
+                                                ).show()
+                                                dialog.dismiss()
+                                            }
+                                        }
+                                        }
+                                    }
                                 }
                             }
 
@@ -158,7 +191,7 @@ class FragmentMain : Fragment() {
                     onDeleteClickListener ={resep ->
                         AlertDialog.Builder(requireContext())
                             .setPositiveButton("Iya"){_,_->
-                        val mDb = ResepDatabase.getInstance(requireContext())
+                        val mDb = AppDatabase.getInstance(requireContext())
                                 lifecycleScope.launch(Dispatchers.IO){
                                 val result = mDb?.resepdao()?.deleteRecipe(resep)
                                     activity?.runOnUiThread{
@@ -197,7 +230,7 @@ class FragmentMain : Fragment() {
     }
     override fun onDestroy() {
         super.onDestroy()
-        ResepDatabase.destroyInstance()
+        AppDatabase.destroyInstance()
     }
     override fun onDestroyView() {
         super.onDestroyView()
