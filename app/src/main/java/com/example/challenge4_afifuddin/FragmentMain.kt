@@ -48,7 +48,7 @@ class FragmentMain : Fragment() {
         mDb = AppDatabase.getInstance(requireContext())
         preference = requireContext().getSharedPreferences(FirstFragment.LOGINUSER,Context.MODE_PRIVATE)
 
-        val nama = preference.getString(FirstFragment.USERNAME,"default")
+        val nama = preference.getString(FirstFragment.USERNAME,"defau   lt")
         binding.tvHello.setText("Hello,${nama}")
 
         val editor :SharedPreferences.Editor = preference.edit()
